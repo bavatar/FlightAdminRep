@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/processsearch}" method="post">
+    <select name ="SearchSelector">
+        <option value="NONE">Search by..</option>
+        <option value="Date">Date</option>
+        <option value="DateAndDest">Date and Dest Airport</option>
+        <option value="DepartureLoc">Departure Airport</option>
+        <option value="ArrivalLoc">Arrival Airport</option>
+        <option value="Price">Price</option>
+        <option value="Airline">Airline</option>
+    </select>
+    <input type="date" placeholder="Date.." name="searchD" />
+<!--    <input type="text" placeholder="Search.." name="search">-->
+    <input type="text" placeholder="Search.." name="search">
+<!--    <input type="text" placeholder="Price.." name="price">-->
+    <button type="submit">Search</button>
+
+</form>
+<a href="/add">add</a>
+<center><h2>All Flights</center>
+<table align="center" border="1">
+    <thead>
+    <tr >
+        <th colspan="1">Date</th>
+        <th style="text-align:center" colspan="1" >Origin Airport</th>
+        <th colspan="1">Dest Airport</th>
+        <th colspan="1">Price</th>
+        <th colspan="1">Airline</th>
+    </tr>
+    <thead>
+<div th:each="flight : ${flights}">
+    <tr>
+        <td><p th:text="${#dates.format(flight.date, 'dd-MMM-yyyy')}"></p></td>
+        <td><p th:text="${flight.beginAirport}"></p></td>
+        <td><p th:text="${flight.endAirport}"></p></td>
+        <td><p th:text="${flight.price}"></p></td>
+        <td><p th:text="${flight.airline}"></p></td>
+        <td>
+            <a th:href="@{/update/{id}(id=${flight.id})}">Update</a>
+            <a th:href="@{/detail/{id}(id=${flight.id})}">Details</a>
+            <a th:href="@{/delete/{id}(id=${flight.id})}">Delete</a>
+        </td>
+    </tr>
+</div>
+</table>
+</body>
+</html>
+
+
+<!--<form action="/action_page.php">-->
+<!--    <p>Please select your gender:</p>-->
+<!--    <input type="radio" name="gender" value="male"> Male<br>-->
+<!--    <input type="radio" name="gender" value="female"> Female<br>-->
+<!--    <input type="radio" name="gender" value="other"> Other<br>-->
+
+<!--    <p>Please select your age:</p>-->
+<!--    <input type="radio" name="age" value="30"> 0 - 30<br>-->
+<!--    <input type="radio" name="age" value="60"> 31 - 60<br>-->
+<!--    <input type="radio" name="age" value="100"> 61 - 100<br>-->
+
+<!--    <input type="submit" value="Submit">-->
+<!--</form>-->

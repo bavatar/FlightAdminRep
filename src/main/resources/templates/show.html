@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/">Show Flight Details</a><br />
+Date: <span th:text="${#dates.format(flight.date, 'dd-MMM-yyyy')}"></span>
+Origin Airport: <span th:text="${flight.beginAirport}" ></span>
+Dest Airport: <span th:text="${flight.endAirport}" ></span>
+Price: <span th:text="${flight.price}" ></span>
+Airline: <span th:text="${flight.airline}" ></span>
+<a th:href="@{/delete/{id}(id=${flight.id})}">Delete this flight</a>
+</body>
+</html>

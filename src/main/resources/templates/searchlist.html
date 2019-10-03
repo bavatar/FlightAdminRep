@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<br><br>
+<center>
+<h1>Search Results</h1>
+</center>
+<table align="center" border="1">
+    <thead>
+    <tr >
+        <th colspan="1">Date</th>
+        <th style="text-align:center" colspan="1" >Origin Airport</th>
+        <th colspan="1">Dest Airport</th>
+        <th colspan="1">Price</th>
+        <th colspan="1">Airline</th>
+    </tr>
+    <thead>
+    <div th:each="flight : ${flights}">
+        <tr>
+            <td><p th:text="${#dates.format(flight.date, 'dd-MMM-yyyy')}"></p></td>
+            <td><p th:text="${flight.beginAirport}"></p></td>
+            <td><p th:text="${flight.endAirport}"></p></td>
+            <td><p th:text="${flight.price}"></p></td>
+            <td><p th:text="${flight.airline}"></p></td>
+        </tr>
+    </div>
+</table>
+<!--    this.date = date;-->
+<!--    this.beginAirport = beginAirport;-->
+<!--    this.endAirport = endAirport;-->
+<!--    this.price = price;-->
+<!--    this.airline = airline;-->
+<!--    -->
+</div>
+<center>
+    <a href="/">Home</a>
+</center>
+</body>
+</html>
