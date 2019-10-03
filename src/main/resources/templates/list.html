@@ -2,53 +2,73 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Flight Admin Homepage</title>
+    <div th:insert="base::header"></div>
 </head>
-<body>
-<form th:action="@{/processsearch}" method="post">
-    <select name ="SearchSelector">
-        <option value="NONE">Search by..</option>
-        <option value="Date">Date</option>
-        <option value="DateAndDest">Date and Dest Airport</option>
-        <option value="DepartureLoc">Departure Airport</option>
-        <option value="ArrivalLoc">Arrival Airport</option>
-        <option value="Price">Price</option>
-        <option value="Airline">Airline</option>
-    </select>
-    <input type="date" placeholder="Date.." name="searchD" />
-<!--    <input type="text" placeholder="Search.." name="search">-->
-    <input type="text" placeholder="Search.." name="search">
-<!--    <input type="text" placeholder="Price.." name="price">-->
-    <button type="submit">Search</button>
+<body style="background-color: darkgreen">
+<!-- Navigation bar-->
+<div th:insert="base :: navbar"></div>
 
-</form>
-<a href="/add">add</a>
-<center><h2>All Flights</center>
-<table align="center" border="1">
-    <thead>
-    <tr >
-        <th colspan="1">Date</th>
-        <th style="text-align:center" colspan="1" >Origin Airport</th>
-        <th colspan="1">Dest Airport</th>
-        <th colspan="1">Price</th>
-        <th colspan="1">Airline</th>
-    </tr>
-    <thead>
-<div th:each="flight : ${flights}">
-    <tr>
-        <td><p th:text="${#dates.format(flight.date, 'dd-MMM-yyyy')}"></p></td>
-        <td><p th:text="${flight.beginAirport}"></p></td>
-        <td><p th:text="${flight.endAirport}"></p></td>
-        <td><p th:text="${flight.price}"></p></td>
-        <td><p th:text="${flight.airline}"></p></td>
-        <td>
-            <a th:href="@{/update/{id}(id=${flight.id})}">Update</a>
-            <a th:href="@{/detail/{id}(id=${flight.id})}">Details</a>
-            <a th:href="@{/delete/{id}(id=${flight.id})}">Delete</a>
-        </td>
-    </tr>
+<br>
+<div class="container" style="background-color: lightgoldenrodyellow">
+    <center><h3>Flight Selector Home Page</h3></center>
 </div>
-</table>
+<div class="container" style="background-color: azure">
+<br>
+    <form th:action="@{/processsearch}" method="post">
+        <select name ="SearchSelector">
+            <option value="NONE">Search by..</option>
+            <option value="Date">Date</option>
+            <option value="DateAndDest">Date and Dest Airport</option>
+            <option value="DepartureLoc">Departure Airport</option>
+            <option value="ArrivalLoc">Arrival Airport</option>
+            <option value="Price">Price</option>
+            <option value="Airline">Airline</option>
+        </select>
+        <input type="date" placeholder="Date.." name="searchD" />
+        <input type="text" placeholder="Search.." name="search">
+        <button type="submit">Search</button>
+    </form>
+    <a href="/add">add</a>
+    <center><h2>All Flights</center>
+    <table align="center" border="1">
+        <thead>
+        <tr >
+            <th colspan="1">Date</th>
+            <th style="text-align:center" colspan="1" >Origin Airport</th>
+            <th colspan="1">Dest Airport</th>
+            <th colspan="1">Price</th>
+            <th colspan="1">Airline</th>
+            <th colspan="1" class="text-center">Actions</th>
+        </tr>
+        </thead>
+    <div th:each="flight : ${flights}">
+        <tr>
+            <td><p th:text="${#dates.format(flight.date, 'dd-MMM-yyyy')}"></p></td>
+            <td><p th:text="${flight.beginAirport}"></p></td>
+            <td><p th:text="${flight.endAirport}"></p></td>
+            <td><p th:text="${flight.price}"></p></td>
+            <td><p th:text="${flight.airline}"></p></td>
+            <td>
+                <a th:href="@{/update/{id}(id=${flight.id})}">Update</a>
+                <a th:href="@{/detail/{id}(id=${flight.id})}">Details</a>
+                <a th:href="@{/delete/{id}(id=${flight.id})}">Delete</a>
+            </td>
+        </tr>
+    </div>
+    </table>
+    <br>
+</div>
+<br>
+<div class="container" th:fragment="footnote">
+    <footer>
+        <center>
+            <div class="footer-main-div" style="alignment: center">
+                <p style="color:greenyellow; ">&copy; Copyright 2019 John Anderjaska.</p>
+            </div>
+        </center>
+    </footer>
+</div>
 </body>
 </html>
 
