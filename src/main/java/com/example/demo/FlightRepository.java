@@ -11,8 +11,7 @@ public interface FlightRepository extends CrudRepository<Flight,Long> {
     ArrayList<Flight> findFlightByDate(Date date);
     ArrayList<Flight> findFlightByPriceContaining(String price);
     ArrayList<Flight> findFlightByAirlineContainingIgnoreCase(String airline);
-    //ArrayList<Flight> findFlightByAirlineContainingIgnoreCaseAnd(String airline);
-    ArrayList<Flight> findFlightByDateAndEndAirport(Date date, String dest);
+    ArrayList<Flight> findFlightByDateAndEndAirportIgnoreCase(Date date, String dest);
 
 
 //    String outStr = "";

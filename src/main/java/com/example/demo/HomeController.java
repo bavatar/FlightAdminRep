@@ -66,7 +66,8 @@ public class HomeController {
         }
         else if (optionvalue.equals("Airline")) {
             model.addAttribute("flights", flightRepository.findFlightByAirlineContainingIgnoreCase(search));
-        } else if (optionvalue.equals("DateAndDest"))
+        }
+        else if (optionvalue.equals("DateAndDest"))
         {
             System.out.println("Dest: " + search);
 //            System.out.println("Date: " + searchD);
@@ -83,7 +84,7 @@ public class HomeController {
                 e.printStackTrace();
             }
 //ArrayList<Flight> findFlightByDateAAndEndAirport(Date date, String dest);
-            ArrayList<Flight> flightsArrayDate = flightRepository.findFlightByDateAndEndAirport(dateIn, search);
+            ArrayList<Flight> flightsArrayDate = flightRepository.findFlightByDateAndEndAirportIgnoreCase(dateIn, search);
 //            ArrayList<Flight> flightsArrayDest = flightRepository.findFlightByEndAirportContainingIgnoreCase(search);
             model.addAttribute("flights", flightsArrayDate);
         }
